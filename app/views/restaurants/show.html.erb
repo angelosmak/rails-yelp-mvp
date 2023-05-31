@@ -1,0 +1,42 @@
+<div class="ms-2 d-flex mb-3"><%= link_to "Back to restaurants!", restaurants_path,class:"me-auto p-2 btn btn-primary" %>
+<%= link_to "Add a new Review", new_restaurant_review_path(@restaurant[:id]), class:"p-2  btn btn-primary" %>
+
+</div>
+ <div class="container mt-4 col-7">
+    <div class=" restaurant-header ">
+    <div class="restaurant-header">
+      <h2 class="restaurant-title"><%= @restaurant.name %></h2>
+      <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-link edit-button" do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+  </div>
+    <%= link_to restaurant_path(@restaurant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-link delete-button" do %>
+      <i class="fa-regular fa-trash-can"></i>
+    <% end %>
+    </div>
+    </h2>
+  <div class="separate pt-4">
+    <p><i class="fa-solid fa-location-dot"></i> <%= @restaurant.address %></p>
+    <p><i class="fa-light fa-phone"></i> <%= @restaurant.phone_number %></p>
+    <p><i class="fa-regular fa-fork-knife"></i> <%= @restaurant.category %></p>
+    <p><i class="fa-sharp fa-solid fa-star-sharp-half-stroke"></i> <p><strong>Reviews</strong></p>
+    <ul class="list-group">
+    <div class="d-flex justify-content-between">
+    <div>
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item"><%= review.content%> </li>
+        <p>Rating:
+          <% review.rating.times do %>
+            <i class="fa-solid fa-star"></i>
+          <% end %>
+        </p>
+<%= link_to "Delete Review", restaurant_review_path(@restaurant, review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-link delete-button" %>
+
+        <%end%>
+      </div>
+    </ul>
+    <br>
+    </p>
+    </div>
+  </div>
+</div>

@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+ a {
+  text-decoration: none;
+}
+
+.restaurant-header {
+  display: flex;
+  align-items: start;
+}
+
+.restaurant-title {
+  margin-right: 10px;
+}
+
+.separate {
+  border-top: 1px solid rgb(132, 132, 132) ;
+  margin: 10px 0;
+}
+
+p {
+  font-style: italic;
+  opacity: 0.8;
+}
