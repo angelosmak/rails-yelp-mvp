@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :set_restaurant
 
-   def new
+  def new
     @review = Review.new
   end
 
@@ -9,7 +11,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
     @review.save
-    redirect_to restaurant_path(@restaurant), status: :see_other,notice: "Review created successfully!"
+    redirect_to restaurant_path(@restaurant), status: :see_other, notice: 'Review created successfully!'
   end
 
   def destroy
@@ -18,6 +20,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     redirect_to restaurant_path(@restaurant)
   end
+
   private
 
   def set_restaurant
@@ -25,6 +28,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content,:rating)
+    params.require(:review).permit(:content, :rating)
   end
 end

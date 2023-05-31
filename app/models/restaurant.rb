@@ -1,8 +1,10 @@
-class Restaurant < ApplicationRecord
-  Categories = ['Italian', 'Mexican', 'Japanese', 'Indian']
+# frozen_string_literal: true
 
-  has_many :reviews,dependent: :destroy
+class Restaurant < ApplicationRecord
+  Categories = %w[Italian Mexican Japanese Indian].freeze
+
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true
   validates :address, presence: true
-  validates :category, presence: true,inclusion:{in: Categories}
+  validates :category, presence: true, inclusion: { in: Categories }
 end

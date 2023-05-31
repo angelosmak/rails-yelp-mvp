@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
-  before_action :set_restaurants, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurants, only: %i[show edit update destroy]
 
   def index
-   @restaurants = Restaurant.all
+    @restaurants = Restaurant.all
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @restaurant = Restaurant.new
@@ -19,9 +19,7 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     @restaurant.update(restaurant_params)
@@ -34,11 +32,12 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone_number, :category, :review)
   end
 
   def set_restaurants
-  @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 end
